@@ -44,7 +44,7 @@ module.exports = merge(baseWebpack, {
       chunks: ['vendor']
     }),
     new webpack.DefinePlugin({
-      'process.env.SKEDGIT_URL': '"https://login.skedgitnow.com/users/sign_in"'
+      'process.env.SKEDGIT_URL': '"https://skedgit-develop.herokuapp.com/beta"'
     }),
     htmlPage('background', 'background', ['manifest', 'vendor', 'background']),
   ]

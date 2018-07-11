@@ -1,5 +1,3 @@
-// console.log('background !')
-
 // chrome.browserAction.setBadgeText({text: 'ON'})
 
 // onInstalled

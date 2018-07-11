@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseWebpack = require('./webpack.base')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-const {styleLoaders} = require('./tools')
+const {styleLoaders, htmlPage} = require('./tools')
 module.exports = merge(baseWebpack, {
   // cheap-module-eval-source-map быстрее для разработки
   watch: true,
@@ -16,6 +16,10 @@ module.exports = merge(baseWebpack, {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"development"'
     }),
-    new FriendlyErrorsPlugin()
+    new FriendlyErrorsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.SKEDGIT_URL': '"https://skedgit-develop.herokuapp.com/beta"'
+    }),
+    htmlPage('background', 'background', ['background'])
   ]
 })

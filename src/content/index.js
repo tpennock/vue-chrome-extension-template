@@ -1,8 +1,4 @@
-// console.log('content-script!')
-
-const iframeSrc = 'https://skedgit-develop.herokuapp.com/beta'
-// const iframeSrc = 'https://skedgit-develop.herokuapp.com/iframe'
-// const iframeSrc = 'https://login.skedgitnow.com/users/sign_in'
+const iframeSrc = process.env.SKEDGIT_URL
 const containerElemId = 'skedgit-ext-container'
 const iframeElemId = 'skedgit-ext-iframe'
 
@@ -48,7 +44,7 @@ chrome.runtime.onMessage.addListener(
         let xFrameOpts = response.getResponseHeader('X-Frame-Options')
         if (xFrameOpts === 'SAMEORIGIN') {
           sendResponse({confirmation: 'Cannot load iframe'})
-          alert('Cannot load Skedgit Extension')
+          alert('Cannot load Chrome Extension: Skedgit')
         } else {
           let containerElem = document.getElementById(containerElemId)
 

@@ -26,16 +26,15 @@ module.exports = {
   ],
   browser_action: {
     default_title: 'Skedgit',
-    default_icon: 'icons/64.png',
-    // default_popup: 'pages/popup.html'
+    default_icon: 'icons/64.png'
   },
   background: {
     persistent: false,
     page: 'pages/background.html'
   },
-  devtools_page: 'pages/devtools.html',
+  // devtools_page: 'pages/devtools.html',
   content_scripts: [{
-    js: [ 'js/content.js' ],
+    js: [ 'js/manifest.js', 'js/content.js' ],
     run_at: 'document_end',
     matches: ['<all_urls>'],
     all_frames: false

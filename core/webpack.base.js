@@ -1,14 +1,12 @@
 const path = require('path')
 const webpack = require('webpack')
 const ChromeReloadPlugin  = require('wcer')
-const {cssLoaders, htmlPage} = require('./tools')
+const {cssLoaders} = require('./tools')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 let resolve = dir => path.join(__dirname, '..', 'src', dir)
 module.exports = {
   entry: {
-    tab: resolve('./tab'),
-    popup: resolve('./popup'),
     content: resolve('./content'),
     background: resolve('./background')
   },
@@ -86,14 +84,11 @@ module.exports = {
     ]
   },
   plugins: [
-    htmlPage('Skedgit - Dashboard', 'app', ['tab']),
-    htmlPage('Skedgit - Menu', 'popup', ['popup']),
-    htmlPage('background', 'background', ['background']),
     new CopyWebpackPlugin([{ from: path.join(__dirname, '..', 'static') }]),
     new ChromeReloadPlugin({
       port: 9090,
       manifest: path.join(__dirname, '..', 'src', 'manifest.js')
-    }),
+    })
   ],
-  performance: { hints: false },
+  performance: { hints: false }
 }
